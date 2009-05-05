@@ -56,6 +56,8 @@ namespace SpaceShooter
         public override void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
+
+            //Buggy method to make the enemies shoot
             timeSinceLastEnemyBullet += gameTime.ElapsedGameTime.Milliseconds;
             if (timeSinceLastEnemyBullet > bulletDelay)
             {
