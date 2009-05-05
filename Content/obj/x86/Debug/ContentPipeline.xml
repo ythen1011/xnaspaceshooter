@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Images\BadBullet.BMP</Source>
+      <Name>Images\BadBullet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>H:\Game\SpaceShooter\SpaceShooter\bin\x86\Debug\Content\Images\BadBullet.xnb</Output>
+      <Time>2009-04-20T07:42:24-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Enemy.BMP</Source>
+      <Name>Images\Enemy</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>H:\Game\SpaceShooter\SpaceShooter\bin\x86\Debug\Content\Images\Enemy.xnb</Output>
+      <Time>2009-04-20T07:39:52-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Explosion.BMP</Source>
+      <Name>Images\Explosion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>H:\Game\SpaceShooter\SpaceShooter\bin\x86\Debug\Content\Images\Explosion.xnb</Output>
+      <Time>2009-04-20T07:42:08-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\GoodBullet.BMP</Source>
+      <Name>Images\GoodBullet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>H:\Game\SpaceShooter\SpaceShooter\bin\x86\Debug\Content\Images\GoodBullet.xnb</Output>
+      <Time>2009-04-20T07:40:58-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Player.BMP</Source>
+      <Name>Images\Player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>H:\Game\SpaceShooter\SpaceShooter\bin\x86\Debug\Content\Images\Player.xnb</Output>
+      <Time>2009-04-20T07:41:36-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\Blue hills.jpg</Source>
+      <Name>Images\Blue hills</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>H:\Game\SpaceShooter\SpaceShooter\bin\x86\Debug\Content\Images\Blue hills.xnb</Output>
+      <Time>2009-04-17T18:11:26-04:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>H:\Game\SpaceShooter\SpaceShooter\Content\</RootDirectory>
+      <LoggerRootDirectory>H:\Game\SpaceShooter\SpaceShooter\</LoggerRootDirectory>
+      <IntermediateDirectory>H:\Game\SpaceShooter\SpaceShooter\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>H:\Game\SpaceShooter\SpaceShooter\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2008-10-10T18:42:32-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2008-10-10T18:43:28-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2008-10-10T18:43:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2008-10-10T18:48:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2008-10-10T18:48:50-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2009-02-28T11:04:22.875-05:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

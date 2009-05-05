@@ -1,0 +1,4 @@
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2008\Projects\SpaceShooter\SpaceShooter\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\Game\SpaceShooter\SpaceShooter\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Game\SpaceShooter\SpaceShooter\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Game\SpaceShooter\SpaceShooter\Content\obj\x86\Debug\ResolveAssemblyReference.cache
