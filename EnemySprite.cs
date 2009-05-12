@@ -9,6 +9,7 @@ namespace SpaceShooter
 {
     public class EnemySprite:AutomatedSprite
     {
+        //automated sprite that bounces
         public EnemySprite(Texture2D textureImage, Vector2 position,
             Point frameSize, Point collisionOffset, int currentFrame, int sheetSize,
             Vector2 speed)
@@ -31,7 +32,7 @@ namespace SpaceShooter
 
         public override void Update(GameTime gameTime, Rectangle clientBounds)
         {
-            
+            //Bounces the sprites off the edges of the screen
             base.Update(gameTime, clientBounds);
 
             if (position.X < 0)
@@ -44,6 +45,17 @@ namespace SpaceShooter
                 speed.Y *= -1;
         }
 
-        
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch,Color tint )
+        {
+            //Draw the sprite with a tint (for higher health enemies)
+
+            spriteBatch.Draw(textureImage,
+                position,
+                new Rectangle(currentFrame * frameSize.X,
+                    0,
+                    frameSize.X, frameSize.Y),
+                tint, 0, Vector2.Zero,
+                1f, SpriteEffects.None, 0);
+        }
     }
 }

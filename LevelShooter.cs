@@ -19,17 +19,18 @@ namespace SpaceShooter
     /// </summary>
     public class LevelShooter : LevelRocks
     {
-
+        //enemy bullet variables
         Texture2D enemyBullet;
         List<AutomatedSprite> enemyBullets = new List<AutomatedSprite>();
 
         int timeSinceLastEnemyBullet = 0;
         int bulletDelay = 1000;
 
-        public LevelShooter(Game game)
-            : base(game)
+        public LevelShooter(Game game, int lives)
+            : base(game, lives)
         {
             // TODO: Construct any child components here
+            intPlayerLives = lives;
         }
 
         /// <summary>
@@ -45,6 +46,7 @@ namespace SpaceShooter
 
         protected override void LoadContent()
         {
+            //load sprite
             enemyBullet = Game.Content.Load<Texture2D>(@"Images/BadBullet");
             base.LoadContent();
         }
@@ -55,9 +57,9 @@ namespace SpaceShooter
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-            // TODO: Add your update code here
-
-            //Buggy method to make the enemies shoot
+           
+            //Make enemies shoot if delay time is up and they are within a certain
+            //distance of the player
             timeSinceLastEnemyBullet += gameTime.ElapsedGameTime.Milliseconds;
             if (timeSinceLastEnemyBullet > bulletDelay)
             {
@@ -69,7 +71,7 @@ namespace SpaceShooter
                         timeSinceLastEnemyBullet = 0;
                     }
             }
-
+            //collision detection for the bullets and player
             for (int i = 0; i < enemyBullets.Count; ++i)
             {
                 enemyBullets[i].Update(gameTime, Game.Window.ClientBounds);
@@ -91,6 +93,7 @@ namespace SpaceShooter
 
         public override void Draw(GameTime gameTime)
         {
+            //draw the enemy bullets
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend,
                 SpriteSortMode.FrontToBack, SaveStateMode.None);
 
@@ -103,20 +106,25 @@ namespace SpaceShooter
         }
         public void FireEnemyBullet(Point bulletStart)
         {
+            //Fires a bullet by adding it to the managed array
             enemyBullets.Add(new AutomatedSprite(enemyBullet,new Vector2(bulletStart.X,bulletStart.Y),
                 new Point(40,20),new Point(12,0),0,5,new Vector2(0, 5),50));
         }
 
         public override void Increase()
         {
-            bulletDelay -= 15;
+            //increases enemy num, decreases rock respawn time and decreases bullet
+            //delay after the max enemies have been reached
 
             minRockDelay -= 50;
             maxRockDelay -= 50;
 
             enemyNum += enemyIncreaseRate;
             if (enemyNum > enemyMax)
-                ((Game1)Game).LevelUp(2);
+            {
+                bulletDelay -= 50;
+                enemyNum = 4;
+            }
             for (int i = 0; i < enemyNum; ++i)
             {
                 enemySpriteList.Add(new EnemySprite(enemySprite,

@@ -13,9 +13,7 @@ namespace SpaceShooter
 
         enum playerdirection {left, right, stop};
         
-
-        //SpriteEffects flip ;
-
+        //constructors
         public UserControlledSprite(Texture2D textureImage, Vector2 position,
             Point frameSize, Point collisionOffset, int currentFrame, int sheetSize,
             Vector2 speed)
@@ -61,8 +59,7 @@ namespace SpaceShooter
         public override void Update(GameTime gameTime, Rectangle clientBounds)
         {
             // Move the sprite according to the direction property
-            //
-            
+                       
             position += direction;
             if (direction.X < 0)
                 MoveDirection(playerdirection.left, gameTime);
@@ -72,7 +69,7 @@ namespace SpaceShooter
                 MoveDirection(playerdirection.stop, gameTime);
 
                 
-                                // If the sprite is off the screen, put it back in play
+            // If the sprite is off the screen, put it back in play
             if (position.X < 0)
                 position.X = 0;
             if (position.X > clientBounds.Width - frameSize.X)
@@ -82,6 +79,7 @@ namespace SpaceShooter
         }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            //Draw the sprite
             spriteBatch.Draw(textureImage,
                position,
                new Rectangle(currentFrame * frameSize.X,
@@ -93,7 +91,9 @@ namespace SpaceShooter
         }
         private void MoveDirection(playerdirection direction, GameTime gameTime)
         {
-                        timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
+            //animates the ships left and right movement so that it leans
+            //according to the direction
+            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
             if (timeSinceLastFrame > millisecondsPerFrame)
             {
                 timeSinceLastFrame = 0;

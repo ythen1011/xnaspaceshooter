@@ -19,12 +19,15 @@ namespace SpaceShooter
     /// </summary>
     public class LevelRocks : BaseLevelShips
     {
+        //Array to manage rocks
         List<AutomatedSprite> rocks = new List<AutomatedSprite>();
 
+        //Textures for different sized rocks
         Texture2D enemyRock;
         Texture2D enemyRockMedium;
         Texture2D enemyRockLarge;
 
+        //variables to manage creation of rocks
         protected int minRockDelay = 1000;
         protected int maxRockDelay= 2500;
         protected int rockDelay = 1000;
@@ -33,11 +36,11 @@ namespace SpaceShooter
 
         
 
-        public LevelRocks(Game game)
+        public LevelRocks(Game game, int lives)
             : base(game)
         {
             // TODO: Construct any child components here
-            
+            intPlayerLives = lives;
         }
         public override void Initialize()
         {
@@ -47,10 +50,12 @@ namespace SpaceShooter
         }
         protected override void LoadContent()
         {
+            //load rock sprite sheets
             enemyRock = Game.Content.Load<Texture2D>(@"Images/Blue hills");
             enemyRockMedium = Game.Content.Load<Texture2D>(@"Images/Blue hills");
             enemyRockLarge = Game.Content.Load<Texture2D>(@"Images/Blue hills");
 
+            //add the first rock
             rocks.Add(new AutomatedSprite(enemyRock, new Vector2(((Game1)Game).rnd.Next(0, 500),
                 0),new Point(50,50),new Point(5,5), 0,5,new Vector2(0, 5)));
 
@@ -58,14 +63,14 @@ namespace SpaceShooter
         }
         public override void Update(GameTime gameTime)
         {
+            //create rocks if the delay time has been reached
             rockDelay -= gameTime.ElapsedGameTime.Milliseconds;
-
             if (rockDelay <= 0)
             {
                 rockDelay = ((Game1)Game).rnd.Next(minRockDelay, maxRockDelay);
                 rockType = ((Game1)Game).rnd.Next(0, 2);
                 
-
+                //create a random rock type
                 switch (rockType)
                 {
                     case 0:
@@ -88,7 +93,8 @@ namespace SpaceShooter
             }
 
 
-
+            //update the rocks and do collision detection for the player and
+            //bullets
             for (int i = 0; i < rocks.Count; ++i)
             {
                 rocks[i].Update(gameTime, Game.Window.ClientBounds);
@@ -130,6 +136,8 @@ namespace SpaceShooter
         }
         public override void Draw(GameTime gameTime)
         {
+
+            //draw rocks
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend,
                 SpriteSortMode.FrontToBack, SaveStateMode.None);
 
@@ -142,12 +150,13 @@ namespace SpaceShooter
         }
         public override void Increase()
         {
+            //increase the number of enemies and decrease rock respawn time
             minRockDelay -= 50;
             maxRockDelay -= 50;
 
             enemyNum += enemyIncreaseRate;
             if (enemyNum > enemyMax)
-                ((Game1)Game).LevelUp(1);
+                ((Game1)Game).LevelUp(1, intPlayerLives);
             for (int i = 0; i < enemyNum; ++i)
             {
                 enemySpriteList.Add(new EnemySprite(enemySprite,
