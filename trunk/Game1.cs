@@ -21,12 +21,17 @@ namespace SpaceShooter
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        //declare game components(levels)
         BaseLevelShips baseLevel;
         LevelRocks levelRocks;
         LevelShooter levelShooter;
 		public Random rnd;
 
+        //player lives
         public int goodLives = 3;
+
+        //Game over variable
+        bool blnGameOver = false;
         
 		
         public Game1()
@@ -87,12 +92,17 @@ namespace SpaceShooter
 
             // TODO: Add your update logic here
 
-            //foreach (Sprite s in levelRocks.DeadThings)
-            //    if (s.IsDestroyed())
-            //        levelRocks.DeadThings.Remove(s);
-
-
-
+            //If the user presses enter, 
+            if (blnGameOver)
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                {
+                    baseLevel = new BaseLevelShips(this);
+                    Components.Add(baseLevel);
+                    blnGameOver = false;
+                }
+            }
+            
             base.Update(gameTime);
         }
 
@@ -105,24 +115,30 @@ namespace SpaceShooter
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-
+            if (blnGameOver)
+            {
+            }
             base.Draw(gameTime);
         }
 
-        public void LevelUp(int oldRound)
+        public void LevelUp(int oldRound, int lives)
         {
 
             //moves to the next level when the procedure is called
             switch (oldRound)
             {
+                case -1:
+                    Components.Clear();
+                    blnGameOver = true;
+                    break;
                 case 0:
-                    levelRocks = new LevelRocks(this);
+                    levelRocks = new LevelRocks(this, lives);
                     Components.Add(levelRocks);
                     Components.Remove(baseLevel);
                     baseLevel = null;
                     break;
                 case 1:
-                    levelShooter = new LevelShooter(this);
+                    levelShooter = new LevelShooter(this, lives);
                     Components.Add(levelShooter);
                     Components.Remove(levelRocks);
                     levelRocks = null;

@@ -11,6 +11,7 @@ namespace SpaceShooter
     //abstract class that has a collision rect, 
     public abstract class Sprite
     {
+        //variables to animate a sprite
         public Texture2D textureImage;
         protected Vector2 position;
         protected Point frameSize;
@@ -30,11 +31,13 @@ namespace SpaceShooter
 
         public Vector2 PositionCenter
         {
+            //returns the center of a sprite
             get { return new Vector2(position.X + (frameSize.X /2 -20), (int)position.Y); }
         }
 
         public Rectangle collisionRect
         {
+            //returns a bounding box rectangle used for collision detection
             get
             {
                 return new Rectangle(
@@ -45,6 +48,7 @@ namespace SpaceShooter
             }
         }
 
+        //constructors
         public Sprite(Texture2D textureImage, Vector2 position, Point frameSize,
             Point collisionOffset, int currentFrame, int sheetSize, Vector2 speed)
             : this(textureImage, position, frameSize, collisionOffset, currentFrame,
@@ -94,6 +98,7 @@ namespace SpaceShooter
 
         public bool IsOffScreen(Rectangle clientBounds)
         {
+            //checks to see if the sprite is completely off screen
             if (position.Y > clientBounds.Height || position.Y < 0)
                 return true;
             else
@@ -101,6 +106,7 @@ namespace SpaceShooter
         }
         public void startDestroy()
         {
+            //initializes the destroy method
             frameSize = new Point(65, 65);
             sheetSize = 8;
             currentFrame = 0;
@@ -109,6 +115,7 @@ namespace SpaceShooter
         }
         public void Destroy(GameTime gameTime)
         {
+            //replaces the Update() method when the sprite has been hit
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
             if (timeSinceLastFrame > millisecondsPerFrame)
             {
@@ -120,6 +127,7 @@ namespace SpaceShooter
 
         public bool IsDestroyed()
         {
+            //checks to see if the explosion animation is done
             if (currentFrame >= sheetSize)
                 return true;
             else
